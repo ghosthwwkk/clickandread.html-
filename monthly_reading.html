@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Reading</title>
+    <link rel="icon" href="Book.ico">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        :root {
+            --primary-color: #4CAF50; /* Verde brillante */
+            --secondary-color: #FFD700; /* Amarillo dorado */
+            --background-color: #f8ffe5; /* Fondo claro con tinte verde */
+            --text-color: #333; /* Texto oscuro */
+            --white: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Fuente elegante */
+            background: linear-gradient(to bottom right, #A8E6CF, #FFD54F); /* Degradado verde/amarillo */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Barra de navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        nav img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-left: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        ul li a:hover {
+            color: var(--background-color);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-color);
+            width: 250px;
+            margin-right: 10px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-container button {
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Raleway', sans-serif;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .search-container button:hover {
+            background: var(--primary-color);
+        }
+
+        .monthly-reading-header {
+            text-align: center;
+            margin: 50px 0;
+            color: #4E342E; /* Marrón elegante */
+        }
+
+        .monthly-reading-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .monthly-reading-header p {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .monthly-reading-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Clase para los encabezados de los grados */
+        .grade-level {
+            text-align: center;
+            width: 100%;
+            font-size: 14px; /* Tamaño pequeño */
+            font-weight: bold;
+            color: #4E342E;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .book-item {
+            background: #FFF59D; /* Amarillo suave */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Asegurando que todas las imágenes tengan el mismo tamaño */
+        .book-item img {
+            width: 180px;   /* Ancho fijo */
+            height: 250px;  /* Alto fijo */
+            object-fit: cover; /* Esto asegura que la imagen mantenga proporciones sin distorsión */
+            border-radius: 10px;
+        }
+
+        .book-item p {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .book-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #FFC107;
+            color: #4E342E;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-item a:hover {
+            background-color: #FFA000;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo">
+            <img src="book image.png" alt="Logo">
+            Click And Read
+        </div>
+        <ul>
+            <li><a href="file:///C:/Users/Tabi/Desktop/ENGLISH%20PAGE/proyect.html#">Home</a></li>
+            <li><a href="essays.html">Essays</a></li>
+            <li><a href="novel.html">Novels</a></li>
+            <li><a href="monthly_reading.html">Monthly Reading</a></li>
+            <li><a href="paes.html">PAES</a></li>
+            <li><a href="more.html">More</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search books...">
+            <button onclick="searchBooks()">Search</button>
+        </div>
+    </nav>
+
+    <!-- Encabezado de la sección -->
+    <div class="monthly-reading-header">
+        <h1>Monthly Reading</h1>
+        <p>Discover great books for each month, tailored to different grade levels.</p>
+    </div>
+
+    <!-- Lista de libros -->
+    <div class="monthly-reading-list">
+        <!-- 7° Básico -->
+        <div class="grade-level">7° Básico</div>
+        <div class="book-item">
+            <img src="bookmonth1.png" alt="Book 1">
+            <p>Book Title 1</p>
+            <a href="book1_link.pdf" target="_blank">Read Now</a>
+        </div>
+        <div class="book-item">
+            <img src="bookmonth2.png" alt="Book 2">
+            <p>Book Title 2</p>
+            <a href="book2_link.pdf" target="_blank">Read Now</a>
+        </div>
+
+        <!-- 8° Básico -->
+        <div class="grade-level">8° Básico</div>
+        <div class="book-item">
+            <img src="bookmonth3.png" alt="Book 3">
+            <p>Book Title 3</p>
+            <a href="book3_link.pdf" target="_blank">Read Now</a>
+        </div>
+        <div class="book-item">
+            <img src="bookmonth4.png" alt="Book 4">
+            <p>Book Title 4</p>
+            <a href="book4_link.pdf" target="_blank">Read Now</a>
+        </div>
+
+        <!-- 1° Medio -->
+        <div class="grade-level">1° Medio</div>
+        <div class="book-item">
+            <img src="bookmonth5.png" alt="Book 5">
+            <p>Book Title 5</p>
+            <a href="book5_link.pdf" target="_blank">Read Now</a>
+        </div>
+        <div class="book-item">
+            <img src="bookmonth6.png" alt="Book 6">
+            <p>Book Title 6</p>
+            <a href="book6_link.pdf" target="_blank">Read Now</a>
+        </div>
+
+        <!-- 2° Medio -->
+        <div class="grade-level">2° Medio</div>
+        <div class="book-item">
+            <img src="bookmonth7.png" alt="Book 7">
+            <p>Book Title 7</p>
+            <a href="book7_link.pdf" target="_blank">Read Now</a>
+        </div>
+        <div class="book-item">
+            <img src="bookmonth8.png" alt="Book 8">
+            <p>Book Title 8</p>
+            <a href="book8_link.pdf" target="_blank">Read Now</a>
+        </div>
+
+        <!-- 3° Medio -->
+        <div class="grade-level">3° Medio</div>
+        <div class="book-item">
+            <img src="bookmonth9.png" alt="Book 9">
+            <p>Book Title 9</p>
+            <a href="book9_link.pdf" target="_blank">Read Now</a>
+        </div>
+        <div class="book-item">
+            <img src="bookmonth10.png" alt="Book 10">
+            <p>Book Title 10</p>
+            <a href="book10_link.pdf" target="_blank">Read Now</a>
+        </div>
+
+        <!-- 4° Medio -->
+        <div class="grade-level">4° Medio</div>
+        <div class="book-item">
+            <img src="bookmonth11.png" alt="Book 11">
+            <p>Book Title 11</p>
+            <a href="book11_link.pdf" target="_blank">Read Now</a>
+        </div>
+        <div class="book-item">
+            <img src="bookmonth12.png" alt="Book 12">
+            <p>Book Title 12</p>
+            <a href="book12_link.pdf" target="_blank">Read Now</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Click And Read. All rights reserved.</p>
+        <p>Visit our <a href="about.html">About</a> page for more information.</p>
+    </footer>
+</body>
+</html>

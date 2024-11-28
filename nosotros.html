@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Click And Read</title>
+    <link rel="icon" href="Book.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <style>
+        /* Paleta de colores y fuentes */
+        :root {
+            --primary-color: #4CAF50; /* Verde brillante */
+            --secondary-color: #FFD700; /* Amarillo dorado */
+            --background-color: #f8ffe5; /* Fondo claro con tinte verde */
+            --text-color: #333; /* Texto oscuro */
+            --white: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        /* Barra de navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        nav img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-left: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        ul li a:hover {
+            color: var(--background-color);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .about-us-content {
+            width: 70%; /* Ajustado para que haya más espacio */
+            padding: 30px;
+            background: var(--white);
+            box-shadow: 0 4px 10px var(--shadow-color);
+            border-radius: 15px;
+        }
+
+        .about-us-content h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .about-us-content p {
+            line-height: 1.8;
+            font-size: 1.2rem;
+            font-family: 'Raleway', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .about-us-content img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .about-us-content a {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            border-radius: 25px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .about-us-content a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Animación de texto */
+        .about-us-content p {
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .about-us-content p.visible {
+            opacity: 1;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="display: flex; align-items: center;">
+            <img src="book image.png" alt="Logo">
+            <span>Click And Read</span>
+        </div>
+        <ul>
+            <li><a href="novel.html">Novels</a></li>
+            <li><a href="essays.html">Essays</a></li>
+            <li><a href="monthly_reading.html">Monthly Reading</a></li>
+            <li><a href="paes.html">PAES</a></li>
+            <li><a href="more.html">More</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="about-us-content">
+            <h1>About Us</h1>
+            <p class="visible">
+                Click and Read was created by two passionate individuals, Benjamin Poblete and Tabata Cubillos. The idea came from a common problem at our school library, where there weren't enough books for everyone, and the limited reading time made it difficult for students to enjoy their readings. We wanted to solve this issue by creating a digital platform where students could access books anytime and anywhere, promoting reading across our school. Our mission is to inspire learning, assist with academic work, and offer a space for creative exploration. With the addition of our innovative "PAES" section, we aim to encourage student autonomy and help with exam preparation in a more efficient and engaging way.
+            </p>
+
+            <img src="reading-gif.gif" alt="Person reading a book">
+
+            <p>
+                We are excited to continue fostering a love for reading and learning through this digital space. Together, we believe we can make a difference in the way we approach education and literature in our community.Our page was created mainly to help the Zapallar high school, BT Associates seeks to satisfy needs that others seek to do and help them along the way, this page was financed by Hector Ceballos, English teacher at the Zapallar high school
+            </p>
+
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Click And Read | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Animación de texto
+        window.addEventListener('DOMContentLoaded', () => {
+            const paragraphs = document.querySelectorAll('.about-us-content p');
+            paragraphs.forEach(p => p.classList.add('visible'));
+        });
+    </script>
+</body>
+</html>

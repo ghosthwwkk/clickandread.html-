@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click And Read</title>
+    <link rel="icon" href="Book.ico">
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Script de Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="TU_CLIENT_ID.apps.googleusercontent.com">
+    <style>
+        /* Paleta de colores y fuentes */
+        :root {
+            --primary-color: #4CAF50; /* Verde brillante */
+            --secondary-color: #FFD700; /* Amarillo dorado */
+            --background-color: #f8ffe5; /* Fondo claro con tinte verde */
+            --text-color: #333; /* Texto oscuro */
+            --white: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        /* Barra de navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        nav img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        nav span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-left: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        ul li a:hover {
+            color: var(--background-color);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-color);
+            width: 250px;
+            margin-right: 10px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-container button {
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Raleway', sans-serif;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .search-container button:hover {
+            background: var(--primary-color);
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--white);
+        }
+
+        /* Contenido principal */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        main {
+            width: 65%; /* Reducción de tamaño para que encaje mejor */
+            padding: 30px;
+            background: var(--white);
+            box-shadow: 0 4px 10px var(--shadow-color);
+            border-radius: 15px;
+        }
+
+        main h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        main p {
+            line-height: 1.8;
+            font-size: 1.2rem;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        iframe {
+            border-radius: 15px;
+            border: 2px solid var(--primary-color);
+            margin-top: 20px;
+        }
+
+        aside {
+            width: 30%; /* Ajustar el tamaño para que quede mejor */
+            padding: 20px;
+            background: var(--white);
+            box-shadow: 0 4px 10px var(--shadow-color);
+            border-radius: 15px;
+        }
+
+        aside h2 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            font-family: 'Roboto Slab', serif;
+            margin-bottom: 20px;
+        }
+
+        .book-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .book-item img {
+            width: 130px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .book-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .book-item p {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* Sección sobre nosotros */
+        .about-us {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-family: 'Raleway', sans-serif;
+            color: var(--primary-color);
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .about-us a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .about-us a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Logotipos */
+        .logos {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .logos img {
+            width: 80px;
+            height: 80px; /* Asegura que los logos sean de tamaño uniforme */
+            border-radius: 50%; /* Esto hace que los logos sean ovalados */
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logos img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="display: flex; align-items: center;">
+            <img src="book image.png" alt="Logo">
+            <span>Click And Read</span>
+        </div>
+        <ul>
+            <li><a href="novel.html">Novels</a></li>
+            <li><a href="essays.html">Essays</a></li>
+            <li><a href="monthly_reading.html">Monthly Reading</a></li>
+            <li><a href="paes.html">PAES</a></li>
+            <li><a href="https://digitallibrary.io/">More</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search books...">
+            <button onclick="searchBooks()">Search</button>
+        </div>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </nav>
+    <div class="container">
+        <main>
+            <h1>Discover Your Next Adventure</h1>
+            <p>
+                Immerse yourself in the world of books with our curated selection.
+                Whether you're studying for exams or exploring new horizons, we've got you covered, now working with Liceo Zapallar to promote multiplatform reading, Thanks to the sponsorship of Hector Ceballos, you will be able to enjoy thousands of hours of your favorite worlds.
+            </p>
+            <iframe 
+                width="100%" 
+                height="315" 
+                src="https://www.youtube.com/embed/p2k3C-iB88w" 
+                frameborder="0" 
+                allowfullscreen>
+            </iframe>
+
+            <!-- Sobre nosotros -->
+            <div class="about-us">
+                <a href="nosotros.html">About Us</a>
+            </div>
+        </main>
+
+        <!-- Sección de Libros -->
+        <aside>
+            <h2>Books You’ll Love</h2>
+            <!-- Libros restaurados -->
+            <div class="book-item">
+                <a href="https://www.educa.jcyl.es/educacyl/cm/gallery/Recursos%20Infinity/tematicas/webquijote/pdf/DONQUIJOTE_PARTE1.pdf" target="_blank">
+                    <img src="book1.png" alt="Book 1">
+                </a>
+                <p>Don Quijote</p>
+            </div>
+            <div class="book-item">
+                <a href="https://mep.janium.net/janium/Documentos/272302.pdf" target="_blank">
+                    <img src="book2.png" alt="Book 2">
+                </a>
+                <p>Edipo Rey</p>
+            </div>
+            <div class="book-item">
+                <a href="http://biblioteca.cchs.csic.es/digitalizacion_tnt/pdfs/387156.pdf" target="_blank">
+                    <img src="book3.png" alt="Book 3">
+                </a>
+                <p>Lazarillo de Tormes</p>
+            </div>
+            
+        </aside>
+    </div>
+
+    <!-- Logotipos -->
+    <div class="logos">
+        <img src="logozapallar.png" alt="Logo Zapallar">
+        <img src="logoceballos.png" alt="Logo Ceballos">
+        <img src="logoasociados.png" alt="Logo Asociados">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Click And Read | <a href="https://www.instagram.com/extraescolarzapallar/">Liceo Zapallar</a></p>
+    </footer>
+</body>
+</html>

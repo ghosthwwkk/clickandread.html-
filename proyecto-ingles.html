@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click And Read</title>
+    <link rel="icon" href="Book.ico">
+    <!-- Cargar el script de Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <style>
+        /* Estilo para el avatar circular */
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Barra de navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+        }
+
+        /* Estilos para los enlaces de navegación */
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        ul li {
+            margin-left: 10px;
+        }
+
+        ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Estilos para el formulario de búsqueda */
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        .search-container button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilos para los paneles */
+        main {
+            width: 75%;
+            padding: 10px;
+        }
+
+        aside {
+            width: 25%;
+            padding: 10px;
+            border-left: 1px solid #ccc;
+        }
+
+        .book-item {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        /* Reducción del tamaño de las imágenes de los libros */
+        .book-item img {
+            width: 150px; /* Tamaño más pequeño para las imágenes */
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .book-item p {
+            font-size: 14px; /* Tamaño más pequeño para el texto */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Barra de navegación -->
+    <nav>
+        <!-- Logo de la página y nombre -->
+        <div style="display: flex; align-items: center;">
+            <img src="book image.png" alt="Logo de la Página" style="height: 40px;">
+            <span style="color: white; margin-left: 10px;">Click And Read</span>
+        </div>
+
+        <!-- Enlaces de navegación -->
+        <ul>
+            <li><a href="novel.html">Novels</a></li>
+            <li><a href="essays.html">Essays</a></li>
+            <li><a href="monthly_reading.html">Monthly Reading</a></li>
+            <li><a href="paes.html">PAES</a></li>
+            <li><a href="more.html">More</a></li>
+        </ul>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search books...">
+            <button onclick="searchBooks()">Search</button>
+        </div>
+
+        <!-- Avatar para iniciar sesión con Google -->
+        <div class="g-signin2" data-onsuccess="onSignIn">
+            <img src="user-avatar.png" alt="Iniciar sesión" class="avatar" />
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div style="display: flex;">
+        <main>
+            <h1>Find Your Book with Us</h1>
+            <p>
+                You can find the books you need with just one click.<br>
+                We are a page that seeks to help students who enjoy reading<br>
+                and want to improve their studies.
+            </p>
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/p2k3C-iB88w" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </main>
+
+        <!-- Panel lateral de libros -->
+        <aside>
+            <h2>You might be interested...</h2>
+            <p>Click on a book to start reading:</p>
+            <!-- Enlaces a libros -->
+            <a href="https://www.educa.jcyl.es/educacyl/cm/gallery/Recursos%20Infinity/tematicas/webquijote/pdf/DONQUIJOTE_PARTE1.pdf" class="book-item" target="_blank">
+                <img src="book1.png" alt="Don Quijote De la Mancha">
+                <p>Don Quijote De la Mancha</p>
+            </a>
+            <a href="https://mep.janium.net/janium/Documentos/272302.pdf" class="book-item" target="_blank">
+                <img src="book2.png" alt="Book Title 2">
+                <p>Edipo Rey</p>
+            </a>
+            <a href="http://www.bnm.me.gov.ar/giga1/libros/00040677/00040677.pdf" class="book-item" target="_blank">
+                <img src="book3.png" alt="Book Title 3">
+                <p>Lazarillo De Tormes</p>
+            </a>
+        </aside>
+    </div>
+
+    <script>
+        // Función que se ejecuta cuando el inicio de sesión es exitoso
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log("Full Name: " + profile.getName());
+            console.log("Email: " + profile.getEmail());
+
+            // Redirige al usuario a la página de inicio después de iniciar sesión
+            window.location.href = "home.html"; // Cambia a tu página de inicio
+        }
+
+        // Función para realizar la búsqueda de libros
+        function searchBooks() {
+            var searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+            if (searchQuery) {
+                // Redirigir a una página de resultados o realizar una búsqueda en el catálogo
+                // Esta es solo una simulación. Aquí deberías agregar la lógica para buscar libros.
+                alert("Searching for: " + searchQuery);
+                // Puedes redirigir a una página de búsqueda con los resultados:
+                // window.location.href = "search_results.html?query=" + searchQuery;
+            } else {
+                alert("Please enter a book title to search.");
+            }
+        }
+    </script>
+    
+</body>
+
+<footer>
+    <p>&copy; 2024 <a href="https://www.instagram.com/extraescolarzapallar/" target="_blank" style="color: white; text-decoration: none;">Liceo Zapallar</a></p>
+    <p>
+        <a href="mailto:liceo.zapallar@daemcco.cl" style="color: white; text-decoration: none;">liceo.zapallar@daemcco.cl</a>
+    </p>
+</footer>
+
+</html>
