@@ -69,12 +69,6 @@
             color: var(--background-color);
         }
 
-    ul li a:hover {
-        color: var(--background-color);
-    }
-</style>
-
-
         .search-container {
             display: flex;
             align-items: center;
@@ -192,11 +186,9 @@
     <!-- Barra de navegación -->
     <nav>
         <div style="display: flex; align-items: center;">
-            <!-- Envolver el ícono con un enlace al home -->
             <a href="https://ghosthwwkk.github.io/clickandread.html-/">
                 <img src="book image.png" alt="Logo"> 
             </a>
-            <!-- Asegurarnos de que el texto aparezca al lado del logo -->
             <span style="margin-left: 10px; color: var(--white);">Click And Read</span>
         </div>
         <ul>
@@ -233,20 +225,14 @@
             const searchTerm = document.getElementById("search-input").value.toLowerCase();
             const paesItems = document.querySelectorAll(".paes-description");
             paesItems.forEach(item => {
-                const description = item.querySelector("p").textContent.toLowerCase();
-                if (description.includes(searchTerm)) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
+                const itemText = item.textContent.toLowerCase();
+                item.style.display = itemText.includes(searchTerm) ? "block" : "none";
             });
         }
     </script>
 
-    <!-- Pie de página -->
     <footer>
-        <p>&copy; 2024 Click And Read | <a href="https://www.instagram.com/extraescolarzapallar/">Liceo Zapallar</a></p>
-    </footer>
+        <p>Created by <a href="#">Your Name</a></p>
     </footer>
 </body>
 </html>
